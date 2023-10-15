@@ -1,0 +1,100 @@
+---
+import { Image } from "astro:assets";
+import myImage from "../assets/daniela.png";
+import { routes } from "./routes";
+import MenuMobile from "./MenuMobile";
+---
+
+<header
+  transition:persist
+  class={`transition-all duration-300 w-full flex justify-between max-w-7xl px-7 mt-4 md:mt-0 static md:sticky top-4 md:backdrop-blur-xl z-10 rounded-full bg-gradient-to-r bg-zinc-900 bg-opacity-0`}
+>
+  <a href="/" class="flex items-center justify-center align-middle gap-3">
+    <Image
+      src={myImage}
+      alt="A bird sitting on a nest of eggs."
+      class="rounded-full"
+      width="35"
+      height="35"
+    />
+    <p class="text-lg">Daniela Paiva</p>
+  </a>
+  <MenuMobile client:only />
+  <nav class="hidden md:block">
+    <ul class="flex flex-col md:flex-row gap-2 relative">
+      {
+        routes.map((route) => (
+          <li class="py-4 px-4 relative">
+            <a
+              href={route.link}
+              class={
+                "opacity-60 font-normal transition-all duration-300 after:transition-all after:duration-300 hover:text-green-theme hover:opacity-100 after:absolute after:inset-0 after:border-b-2 after:border-green-theme after:m-auto after:w-1 after:opacity-0 hover:after:opacity-100 hover:after:w-full hover:after:visible after:invisible"
+              }
+            >
+              {route.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+<script>
+  const formatHeader = (scrollPos: number) => {
+    const header = document.querySelector("header");
+    if (scrollPos > 0 && window.innerWidth >= 768) {
+      header?.classList.add("px-6");
+      header?.classList.add("shadow-xl");
+
+      header?.classList.remove("bg-opacity-0");
+      header?.classList.add("bg-opacity-70");
+    } else {
+      header?.classList.remove("px-6");
+      header?.classList.remove("shadow-xl");
+
+      header?.classList.remove("bg-opacity-70");
+      header?.classList.add("bg-opacity-0");
+    }
+  };
+
+  document.addEventListener("scroll", () => {
+    window.requestAnimationFrame(() => {
+      formatHeader(window.scrollY);
+    });
+  });
+
+  const selectRoute = (route: string) => {
+    const allMenus = document.querySelectorAll(`nav a`);
+    allMenus.forEach((m) => {
+      if (m?.getAttribute("href") === route) {
+        m.classList.remove("opacity-60");
+        m.classList.add("opacity-100");
+        return;
+      }
+      m.classList.add("opacity-60");
+    });
+  };
+
+  const checkCurrentRoute = () =>
+    selectRoute(window.location.pathname + window.location.hash);
+  checkCurrentRoute();
+  document.addEventListener("astro:after-swap", checkCurrentRoute);
+
+  const loadObservers = () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const intersecting = entry.isIntersecting;
+        if (
+          intersecting &&
+          (entry.target.id === "contact" || entry.target.id === "home")
+        ) {
+          selectRoute(entry.target.id === "contact" ? "/#contact" : "/");
+        }
+      });
+    });
+    const sections = document.querySelectorAll("section");
+    sections.forEach((section) => observer.observe(section));
+  };
+
+  document.addEventListener("astro:page-load", loadObservers);
+</script>

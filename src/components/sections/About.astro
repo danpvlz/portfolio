@@ -1,0 +1,102 @@
+---
+import Section from "../Section.astro";
+import Title from "../Title.astro";
+import Chip from "../Chip.astro";
+
+interface Props {
+  isPreview?: boolean;
+}
+
+const { isPreview = false } = Astro.props;
+
+const stacks = [
+  {
+    type: "Frontend",
+    skills: [
+      "HTML",
+      "CSS3",
+      "JavaScript",
+      "React",
+      "Redux",
+      "TailwindCSS",
+      "Typescript",
+      "GraphQL",
+      "Next.js",
+    ],
+  },
+  {
+    type: "Backend",
+    skills: [
+      "Node.js",
+      "Express",
+      "Laravel",
+      "NestJS",
+      "CodeIgniter",
+      "MongoDB",
+      "PostgreSQL",
+      "MySQL",
+      "SQL Server",
+    ],
+  },
+  {
+    type: "Languagues",
+    skills: ["PHP", "C++", "C#", "Python", "Java", "SQL"],
+  },
+  {
+    type: "Testing",
+    skills: ["Jest", "Cypress", "Playwright"],
+  },
+];
+---
+
+<Section id="about">
+  <Title title="About" />
+  <div class="max-w-3xl flex flex-col gap-8">
+    <p>
+      At the age of 17, one doesn't typically make the best life decisions, but
+      I'm grateful to my 17-year-old self for choosing systems engineering. This
+      path introduced me to excellent professors, friends, and, above all, my
+      passion: software development. From my initial lines of code in Java to
+      working with the latest JavaScript frameworks, it's a journey I thoroughly
+      enjoy, and I couldn't imagine doing anything else.
+    </p>
+    <p class={`${isPreview ? "hidden" : "block"}`}>
+      In my professional life, I've also been fortunate to work on projects that
+      I believe in and where I feel I play a significant role. I've had the
+      opportunity to be a part of teams from which I've learned a great deal and
+      grown professionally.
+    </p>
+    <p class={`${isPreview ? "block" : "hidden"}`}>
+      My main stack now includes, but is not limited to, Next.js, Nest.js,
+      GraphQL, Jest and PostgreSQL.
+    </p>
+    <p class={`${isPreview ? "hidden" : "block"}`}>
+      My stack includes, but is not limited to:
+    </p>
+    <div class={`${isPreview ? "hidden" : "flex"} flex-col gap-10 `}>
+      {
+        stacks.map((stack) => (
+          <div class="flex flex-col gap-4">
+            <p class="w-44 font-bold">{stack.type}</p>
+            <div class="w-full flex flex-wrap gap-4">
+              {stack.skills.map((skill) => (
+                <Chip skill={skill} />
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+    <p>
+      I live in <span
+        class="cursor-llama group transition-all duration-200 underline hover:no-underline font-bold"
+        ><span class="transition-all duration-200 group-hover:text-red-500"
+          >P</span
+        >er<span class="transition-all duration-200 group-hover:text-red-500"
+          >u</span
+        ></span
+      >, so naturally, one of my hobbies is discovering new restaurants and
+      trying to travel as much as I can.
+    </p>
+  </div>
+</Section>

@@ -1,0 +1,65 @@
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { ViewTransitions } from "astro:transitions";
+
+interface Props {
+  title?: string;
+}
+
+const { title = "Daniela Paiva" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" style="scrollbar-gutter: stable;" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <ViewTransitions />
+  </head>
+  <body
+    class="bg-black font-sans text-white flex items-center flex-col min-h-screen overflow-x-hidden selection:bg-emerald-500 selection:text-black scroll-px-0 md:scroll-px-80 font-light text-base md:text-xl"
+  >
+    <Header data-astro-reload />
+    <main class="w-full max-w-7xl flex items-center flex-col h-full flex-1 px-7 ">
+      <slot />
+    </main>
+    <Footer />
+    <style is:global>
+      @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+      html {
+        font-family: "Raleway", sans-serif;
+      }
+      article {
+        font-weight: 400;
+        line-height: 1.7;
+        letter-spacing: normal;
+        color: #e9e6e2;
+      }
+      article h2 {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      article p {
+        margin-bottom: 40px;
+      }
+      article ul{
+        margin: 10px 0px 30px 20px;
+        list-style: disc;
+      }
+      article ol {
+        margin: 10px 0px 30px 27px;
+        list-style: auto;
+      }
+      article ul li:last-child p,
+      article ol li:last-child p {
+        margin-bottom:0px;
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+---
+const services = [
+  "Technical Support and Maintenance",
+  "Performance Optimization",
+  "Version Control and DevOps",
+  "Cloud Services Integration",
+  "Content Management Systems (CMS)",
+  "Real-time Apps",
+  "Mobile Apps",
+  "APIs",
+  "Database Management",
+  "Database Design",
+  "Back-End Development",
+  "UI/UX Design",
+  "Front-End Development",
+  "Static Page",
+  "Web Development",
+  "E-Commerce",
+];
+---
+
+<div class="slider">
+  <div class="slide-track">
+    {
+      services.map((service) => (
+        <>
+          <div class="slide">{service}</div>
+          <div class="dot text-xs md:text-sm text-green-theme">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-asterisk"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="currentColor"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M12 12l8 -4.5" />
+              <path d="M12 12v9" />
+              <path d="M12 12l-8 -4.5" />
+              <path d="M12 12l8 4.5" />
+              <path d="M12 3v9" />
+              <path d="M12 12l-8 4.5" />
+            </svg>
+          </div>
+        </>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  @keyframes scroll {
+    0% {
+      transform: translateX(-3800px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .slider {
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  .slider::before,
+  .slider::after {
+    content: "";
+    position: absolute;
+    width: 200px;
+    z-index: 2;
+  }
+
+  .slider::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+  }
+
+  .slider::before {
+    left: 0;
+    top: 0;
+  }
+
+  .slide-track {
+    animation: scroll 50s linear infinite;
+    display: flex;
+    width: max-content;
+
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .slide {
+    text-align: center;
+    width: fit-content;
+  }
+</style>

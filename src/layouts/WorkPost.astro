@@ -1,0 +1,43 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Layout from "./Layout.astro";
+import { Image } from "astro:assets";
+import LinkTo from "../components/LinkTo.astro";
+
+type Props = CollectionEntry<"work">;
+
+const {
+  data: { title, heroImage, url, tags },
+  slug,
+} = Astro.props;
+---
+
+<Layout>
+  <article class="flex flex-col gap-[60px] py-14 md:py-32 max-w-4xl">
+    <div class="w-full flex flex-col">
+      {
+        url && <LinkTo link={url}>Live View</LinkTo>
+      }
+      <h1 class="text-6xl font-extrabold mb-4 mt-3" transition:name={`worktitle ${slug}`}>{title}</h1>
+      {
+        tags ? 
+        <div class="flex flex-wrap gap-2 mb-10">
+          {
+            tags?.map((el:string)=><span class="border-1 border-white rounded-full text-sm md:text-base px-4 py-1">{el}</span>)
+          }
+        </div> : <></>
+      }
+      {
+        heroImage && (
+          <img
+            transition:name={`workimage ${slug}`}
+            src={heroImage}
+            class="w-full aspect-auto rounded-3xl object-cover  mb-10"
+            alt=""
+          />
+        )
+      }
+      <slot />
+    </div>
+  </article>
+</Layout>

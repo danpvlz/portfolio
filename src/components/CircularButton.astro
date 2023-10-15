@@ -1,0 +1,67 @@
+---
+import { MY_EMAIL } from "../constants";
+---
+
+<a
+  href={`mailto:${MY_EMAIL}`}
+  target="_blank"
+  rel="noreferrer"
+  class="w-52 h-w-52 p-2 bg-gray-theme rounded-full transition-all duration-200 cursor-pointer group bg-opacity-20 border-1 border-green-theme text-green-theme hover:bg-opacity-5"
+>
+  <div class="relative">
+    <svg class="button-text" viewBox="0 0 100 100" width="100" height="100">
+      <defs>
+        <path
+          id="circle"
+          d="
+            M 50, 50
+            m -37, 0
+            a 37,37 0 1,1 74,0
+            a 37,37 0 1,1 -74,0"
+        ></path>
+      </defs>
+      <text>
+        <textPath xlink:href="#circle">
+          Contact me ✷ Work with me ✷ Say hi ✷
+        </textPath>
+      </text>
+    </svg>
+    <div
+      class="absolute w-20 h-20 p-6 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:-rotate-45 transition-all duration-300"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+      </svg>
+    </div>
+  </div>
+</a>
+
+<style>
+  @keyframes rotate-infinite {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .button-text {
+    fill: currentColor;
+    height: auto;
+    transform-origin: center;
+    width: 100%;
+    animation: rotate-infinite 16s linear infinite;
+  }
+  .button-text text {
+    text-transform: uppercase;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+  }
+</style>
