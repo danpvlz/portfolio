@@ -1,6 +1,4 @@
 ---
-import { Image } from "astro:assets";
-import myImage from "../assets/daniela.png";
 import { routes } from "./routes";
 import MenuMobile from "./MenuMobile";
 ---
@@ -9,13 +7,11 @@ import MenuMobile from "./MenuMobile";
   transition:persist
   class={`transition-all duration-300 w-full flex justify-between max-w-7xl px-7 static mt-5 md:mt-0 md:fixed z-50 bg-black bg-opacity-70 md:backdrop-blur-xl rounded-full top-2 `}
 >
-  <a href="/" class="flex items-center justify-center align-middle gap-3">
-    <Image
-      src={myImage}
-      alt="Daniela Paiva"
-      class="rounded-full border-2 border-slate-400"
-      width="35"
-      height="35"
+  <a  href="/" class="flex items-center justify-center align-middle gap-3">
+    <img
+      src={"./images/daniela.png"}
+      alt="Daniela profile picture"
+      class="rounded-full border-2 w-9 border-slate-400"
     />
     <p class="font-normal">Daniela Paiva</p>
   </a>
@@ -52,10 +48,6 @@ import MenuMobile from "./MenuMobile";
     });
   };
 
-  (function () {
-    selectRoute(window.location.pathname + window.location.hash);
-  })();
-
   const loadObservers = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -64,10 +56,10 @@ import MenuMobile from "./MenuMobile";
           selectRoute(entry.target.id === "home" ? '/' : `#${entry.target.id}`);
         }
       });
-    },  { threshold: [0.25] });
+    },  { threshold: [0.5] });
     const sections = document.querySelectorAll("section");
     sections.forEach((section) => observer.observe(section));
   };
 
-  document.addEventListener("astro:page-load", loadObservers);
+  document.addEventListener("astro:page-load", loadObservers, { once: true });
 </script>
