@@ -2,7 +2,7 @@
 title: 'Regional Marketplace'
 description: 'Marketplace for local businesses'
 pubDate: '2022-08-01'
-heroImage: '/images/marketplace.png'
+heroImage: '../../../public/images/marketplace.png'
 tags: ["JavaScript","React","Redux","MySQL","Node.js","Next.js"]
 ---
 

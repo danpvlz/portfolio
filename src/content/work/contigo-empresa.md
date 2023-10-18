@@ -3,7 +3,7 @@ title: 'Contigo Empresa'
 description: 'Web-Based News and Magazine Platform'
 url: 'https://cclam.org.pe/contigo-empresa'
 pubDate: '2022-10-01'
-heroImage: '/images/contigoempresacclam.png'
+heroImage: '../../../public/images/contigoempresacclam.png'
 tags: ["JavaScript","React","Redux","MySQL","PHP","Laravel","Next.js"]
 ---
 

@@ -3,7 +3,7 @@ title: "Globalsoft"
 description: "SPA for Institution's Internal Processes"
 url: 'https://cclam.org.pe/gs'
 pubDate: '2022-08-01'
-heroImage: '/images/globalsoft.png'
+heroImage: '../../../public/images/globalsoft.png'
 tags: ["JavaScript","React","Redux","MySQL","Firebase","PHP","Laravel","PoweBI"]
 ---
 

@@ -27,16 +27,13 @@ const {
           }
         </div> : <></>
       }
-      {
-        heroImage && (
-          <img
+          <Image
             transition:name={`workimage ${slug}`}
             src={heroImage}
-            class="w-full aspect-auto rounded-3xl object-cover  mb-10"
+            class="bg-gray-theme w-full h-full aspect-auto rounded-3xl object-cover mb-10"
+            loading={"lazy"}
             alt={`Work: ${title}`}
           />
-        )
-      }
       <slot />
     </div>
   </article>

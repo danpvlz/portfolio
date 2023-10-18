@@ -3,7 +3,7 @@ title: 'CCLAM Web'
 description: 'Design and Web Development'
 url: 'https://cclam.org.pe/afiliacion'
 pubDate: '2022-08-01'
-heroImage: '/images/cclamweb.png'
+heroImage: '../../../public/images/cclamweb.png'
 tags: ["JavaScript","React","Redux","MySQL","Node.js","PHP","Laravel","Next.js"]
 ---
 

@@ -1,6 +1,8 @@
 ---
 import { routes } from "./routes";
 import MenuMobile from "./MenuMobile";
+import { Image } from "astro:assets";
+import myImage from "../assets/daniela.png"
 ---
 
 <header
@@ -8,10 +10,10 @@ import MenuMobile from "./MenuMobile";
   class={`transition-all duration-300 w-full flex justify-between max-w-7xl px-7 static mt-5 md:mt-0 md:fixed z-50 bg-black bg-opacity-70 md:backdrop-blur-xl rounded-full top-2 `}
 >
   <a  href="/" class="flex items-center justify-center align-middle gap-3">
-    <img
-      src={"./images/daniela.png"}
+    <Image
+      src={myImage}
       alt="Daniela profile picture"
-      class="rounded-full border-2 w-9 border-slate-400"
+      class="rounded-full border-2 w-9 aspect-square border-slate-400 bg-black"
     />
     <p class="font-normal">Daniela Paiva</p>
   </a>

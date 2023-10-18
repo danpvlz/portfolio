@@ -2,7 +2,7 @@
 title: 'Campus CCLAM'
 description: 'E-learning Platform'
 pubDate: '2022-11-01'
-heroImage: '/images/campuscclam.png'
+heroImage: '../../../public/images/campuscclam.png'
 tags: ["JavaScript","React","Redux","PostgreSQL","Node.js","Next.js"]
 ---
 

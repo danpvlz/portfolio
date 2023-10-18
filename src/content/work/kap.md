@@ -3,7 +3,7 @@ title: 'KAP'
 description: 'Business Diagnosis'
 url: 'https://www.cclam.org.pe/diagnostico-empresarial/'
 pubDate: '2021-03-01'
-heroImage: '/images/kap.png'
+heroImage: '../../../public/images/kap.png'
 tags: ["JavaScript","React","MySQL","PHP","Laravel"]
 ---
 

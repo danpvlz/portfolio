@@ -2,6 +2,7 @@
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import { ViewTransitions } from "astro:transitions";
+import FontLoader from "./FontLoader.astro";
 
 interface Props {
   title?: string;
@@ -20,6 +21,7 @@ const { title = "Daniela Paiva" } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <ViewTransitions />
+    <FontLoader />
   </head>
   <body
     class="bg-black font-sans text-white flex items-center flex-col min-h-screen overflow-x-hidden selection:bg-emerald-500 selection:text-black scroll-px-0 md:scroll-px-80 font-light text-base md:text-xl"
@@ -32,8 +34,132 @@ const { title = "Daniela Paiva" } = Astro.props;
     </main>
     <Footer />
     <style is:global>
-      @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
+      @font-face {
+        font-family: "Raleway";
+        src: url("/fonts/Raleway-Black.woff") format("woff");
+        font-weight: 900;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Raleway";
+        src: url("/fonts/Raleway-BlackItalic.woff") format("woff");
+        font-weight: 900;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Raleway";
+        src: url("/fonts/Raleway-Bold.woff") format("woff");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Raleway";
+        src: url("/fonts/Raleway-BoldItalic.woff") format("woff");
+        font-weight: 700;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Raleway";
+        src: url("/fonts/Raleway-ExtraBold.woff") format("woff");
+        font-weight: 800;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Raleway";
+        src: url("/fonts/Raleway-ExtraBoldItalic.woff") format("woff");
+        font-weight: 800;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Raleway";
+        src: url("/fonts/Raleway-ExtraLight.woff") format("woff");
+        font-weight: 200;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Raleway";
+        src: url("/fonts/Raleway-ExtraLightItalic.woff") format("woff");
+        font-weight: 200;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Raleway";
+        src: url("/fonts/Raleway-Italic.woff") format("woff");
+        font-weight: 400;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Raleway";
+        src: url("/fonts/Raleway-Light.woff") format("woff");
+        font-weight: 300;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Raleway";
+        src: url("/fonts/Raleway-LightItalic.woff") format("woff");
+        font-weight: 300;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Raleway";
+        src: url("/fonts/Raleway-Medium.woff") format("woff");
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Raleway";
+        src: url("/fonts/Raleway-MediumItalic.woff") format("woff");
+        font-weight: 500;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Raleway";
+        src: url("/fonts/Raleway-Regular.woff") format("woff");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Raleway";
+        src: url("/fonts/Raleway-SemiBold.woff") format("woff");
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Raleway";
+        src: url("/fonts/Raleway-SemiBoldItalic.woff") format("woff");
+        font-weight: 600;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Raleway";
+        src: url("/fonts/Raleway-Thin.woff") format("woff");
+        font-weight: 100;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Raleway";
+        src: url("/fonts/Raleway-ThinItalic.woff") format("woff");
+        font-weight: 100;
+        font-style: italic;
+        font-display: swap;
+      }
       html {
         font-family: "Raleway", sans-serif;
       }
