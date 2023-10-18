@@ -1,21 +1,21 @@
 ---
 const services = [
-  "Technical Support and Maintenance",
-  "Performance Optimization",
-  "Version Control and DevOps",
-  "Cloud Services Integration",
-  "Content Management Systems (CMS)",
-  "Real-time Apps",
-  "Mobile Apps",
+  "E-Commerce",
+  "Web Development",
+  "Static Page",
+  "Front-End Development",
+  "Back-End Development",
   "APIs",
   "Database Management",
-  "Database Design",
-  "Back-End Development",
+  "Mobile Apps",
   "UI/UX Design",
-  "Front-End Development",
-  "Static Page",
-  "Web Development",
-  "E-Commerce",
+  "Database Design",
+  "Version Control and DevOps",
+  "Real-time Apps",
+  "Technical Support and Maintenance",
+  "Performance Optimization",
+  "Cloud Services Integration",
+  "Content Management Systems (CMS)",
 ];
 ---
 
@@ -25,7 +25,7 @@ const services = [
       services.map((service) => (
         <>
           <div class="slide">{service}</div>
-          <div class="dot text-xs md:text-sm text-green-theme">
+          <div class="dot text-xs md:text-sm text-primary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="icon icon-tabler icon-tabler-asterisk"
@@ -56,10 +56,10 @@ const services = [
 <style>
   @keyframes scroll {
     0% {
-      transform: translateX(-3800px);
+      transform: translateX(0);
     }
     100% {
-      transform: translateX(0);
+      transform: translateX(-3800px);
     }
   }
 

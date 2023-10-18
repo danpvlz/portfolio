@@ -10,10 +10,10 @@ module.exports = {
       },
       colors: {
         // white: '#E9E6E2',
-        black: "#121212",
+        black: "#060816",
         "gray-theme": "#181c20",
         "gray-transparent": "#2f2f2f",
-        "green-theme": "#28e98c", //#1CA664 //blue:378afe
+        "primary": "#1CA664", //#1CA664 //blue:378afe
       },
       borderWidth:{
         '1': '1px',

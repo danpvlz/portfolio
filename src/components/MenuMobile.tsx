@@ -16,11 +16,11 @@ const MenuMobile = () => {
   return (
     <div className="flex items-center">
       <div
-        className={`fixed w-full inset-0 bg-black bg-opacity-95 backdrop-blur-md p-5 flex flex-col items-center justify-center ${
+        className={`bg-black fixed w-full inset-0 bg-opacity-95 backdrop-blur-md p-5 flex flex-col items-center justify-center ${
           open ? "block" : "hidden"
         }`}
       >
-        <button onClick={handleToggleMenu} className="absolute top-6 right-7">
+        <button onClick={handleToggleMenu} className="absolute z-0 top-6 right-7">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"

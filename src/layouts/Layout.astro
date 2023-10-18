@@ -25,7 +25,9 @@ const { title = "Daniela Paiva" } = Astro.props;
     class="bg-black font-sans text-white flex items-center flex-col min-h-screen overflow-x-hidden selection:bg-emerald-500 selection:text-black scroll-px-0 md:scroll-px-80 font-light text-base md:text-xl"
   >
     <Header data-astro-reload />
-    <main class="w-full max-w-7xl flex items-center flex-col h-full flex-1 px-7 ">
+    <main
+      class="w-full max-w-7xl flex items-center flex-col h-full flex-1 px-7"
+    >
       <slot />
     </main>
     <Footer />
@@ -48,7 +50,7 @@ const { title = "Daniela Paiva" } = Astro.props;
       article p {
         margin-bottom: 40px;
       }
-      article ul{
+      article ul {
         margin: 10px 0px 30px 20px;
         list-style: disc;
       }
@@ -58,7 +60,7 @@ const { title = "Daniela Paiva" } = Astro.props;
       }
       article ul li:last-child p,
       article ol li:last-child p {
-        margin-bottom:0px;
+        margin-bottom: 0px;
       }
     </style>
   </body>
