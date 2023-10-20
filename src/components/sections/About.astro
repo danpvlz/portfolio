@@ -45,7 +45,7 @@ const stacks = [
 
 <Section id="about">
   <Title title="About" />
-  <div class="max-w-3xl flex flex-col gap-8">
+  <div id="content" class="max-w-3xl flex flex-col gap-8">
     <p>
       At the age of 17, one doesn't typically make the best life decisions, but
       I'm grateful to my 17-year-old self for choosing systems engineering. This
@@ -60,9 +60,7 @@ const stacks = [
       opportunity to be a part of teams from which I've learned a great deal and
       grown professionally.
     </p>
-    <p>
-      My stack includes, but is not limited to:
-    </p>
+    <p>My stack includes, but is not limited to:</p>
     <div class={`flex flex-col gap-10 `}>
       {
         stacks.map((stack) => (

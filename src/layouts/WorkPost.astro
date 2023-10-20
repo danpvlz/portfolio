@@ -1,7 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import Layout from "./Layout.astro";
-import { Image } from "astro:assets";
 import LinkTo from "../components/LinkTo.astro";
 
 type Props = CollectionEntry<"work">;
@@ -27,9 +26,11 @@ const {
           }
         </div> : <></>
       }
-          <Image
+          <img
             transition:name={`workimage ${slug}`}
-            src={heroImage}
+            src={heroImage.src}
+            width={heroImage.width}
+            height={heroImage.height}
             class="bg-gray-theme w-full h-full aspect-auto rounded-3xl object-cover mb-10"
             loading={"lazy"}
             alt={`Work: ${title}`}

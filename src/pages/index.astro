@@ -7,8 +7,46 @@ import Contact from "../components/sections/Contact.astro";
 ---
 
 <Layout title="Daniela Paiva">
-    <Landing />
-    <Works />
-    <About />
-    <Contact />
+  <Landing />
+  <Works />
+  <About />
+  <Contact />
 </Layout>
+
+<script>
+  const loadObservers = () => {
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          const title = document.querySelector(
+            `#${entry.target.id} .title-section`
+          );
+          const content = document.querySelector(
+            `#${entry.target.id} #content`
+          );
+
+          title?.classList.add("hide");
+          content?.classList.add("hide");
+
+          const intersecting = entry.isIntersecting;
+          if (intersecting) {
+            title?.classList.remove("hide");
+            content?.classList.remove("hide");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: [0.3], rootMargin: "50px" }
+    );
+    const sections = document.querySelectorAll("section");
+    sections.forEach((section) => observer.observe(section));
+  };
+  window.addEventListener("load", loadObservers);
+</script>
+<style>
+  header nav,
+  header #name-and-picture {
+    opacity: 0;
+    animation: slideUp 0.8s cubic-bezier(0, 0.55, 0.45, 1) forwards;
+  }
+</style>
