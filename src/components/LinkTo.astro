@@ -12,7 +12,7 @@ const { link, extraClasses, newPage = true } = Astro.props;
   href={link}
   rel="noreferrer"
   target={newPage ? "_blank" : "_self"}
-  class={`flex items-center gap-2 hover:text-primary text-gray-200 w-fit group ${extraClasses}`}
+  class={`font-normal dark:font-light flex items-center gap-2 hover:text-primary opacity-80 w-fit group ${extraClasses}`}
 >
   <slot />
   <svg

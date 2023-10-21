@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import Layout from "./Layout.astro";
 import LinkTo from "../components/LinkTo.astro";
+import Chip from "../components/Chip.astro";
 
 type Props = CollectionEntry<"work">;
 
@@ -22,7 +23,7 @@ const {
         tags ? 
         <div class="flex flex-wrap gap-2 mb-10">
           {
-            tags?.map((el:string)=><span class="border-1 border-white rounded-full text-sm md:text-base px-4 py-1">{el}</span>)
+            tags?.map((el:string)=><Chip skill={el} />)
           }
         </div> : <></>
       }

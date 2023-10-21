@@ -24,7 +24,7 @@ const { title = "Daniela Paiva" } = Astro.props;
     <FontLoader />
   </head>
   <body
-    class="bg-black font-sans text-white flex items-center flex-col min-h-screen overflow-x-hidden selection:bg-emerald-500 selection:text-black scroll-px-0 md:scroll-px-80 font-light text-base md:text-xl"
+    class="transition-all duration-200 ease-in-out bg-creame dark:bg-black font-sans text-black dark:text-white flex items-center flex-col min-h-screen overflow-x-hidden selection:bg-emerald-500 selection:text-black scroll-px-0 md:scroll-px-80 font-light text-base md:text-xl"
   >
     <Header />
     <main
@@ -167,6 +167,9 @@ const { title = "Daniela Paiva" } = Astro.props;
         font-weight: 400;
         line-height: 1.7;
         letter-spacing: normal;
+        color: #060816;
+      }
+      html.dark article {
         color: #e9e6e2;
       }
       article h2 {
@@ -189,5 +192,27 @@ const { title = "Daniela Paiva" } = Astro.props;
         margin-bottom: 0px;
       }
     </style>
+    <script is:inline>
+    const theme = (() => {
+      if (
+        typeof localStorage !== "undefined" &&
+        localStorage.getItem("theme")
+      ) {
+        return localStorage.getItem("theme");
+      }
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        return "dark";
+      }
+      return "light";
+    })();
+
+    if (theme === "light") {
+      document.documentElement.classList.remove("dark");
+    } else {
+      document.documentElement.classList.add("dark");
+    }
+
+    window.localStorage.setItem("theme", theme);
+    </script>
   </body>
 </html>

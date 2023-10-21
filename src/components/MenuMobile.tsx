@@ -1,68 +1,80 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { routes } from "./routes";
 
 const MenuMobile = () => {
   const [open, setOpen] = useState<boolean>(false);
+  const [hidding, setHidding] = useState<boolean>(false);
 
   const handleToggleMenu = () => {
-    setOpen((prev) => !prev);
+    if (open) {
+      setHidding(true);
+      setTimeout(() => {
+        setOpen(false);
+        setHidding(false);
+      }, 450);
+    } else {
+      setOpen(true);
+    }
   };
 
-  const handleRedirect=(link:string)=>{
-    setOpen(false)
+  const handleRedirect = (link: string) => {
+    setOpen(false);
     window.location.replace(link);
-  }
+  };
 
   return (
-    <div className="flex items-center">
-      {
-        open ? 
+    <div className="relative flex items-center">
+      {open ? (
         <div
-          className={`bg-black fixed w-full inset-0 bg-opacity-95 backdrop-blur-md p-5 flex flex-col items-center justify-center`}
+          className={`${
+            hidding ? "animate-hideBG" : "animate-appearBG"
+          }  bg-creame dark:bg-black fixed w-full inset-0 bg-opacity-95 backdrop-blur-md p-5 flex flex-col items-center justify-center`}
         >
-          <button title="open menu" onClick={handleToggleMenu} className="absolute z-0 top-6 right-7">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              strokeWidth="2"
-              stroke="currentColor"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <path d="M18 6l-12 12"></path>
-              <path d="M6 6l12 12"></path>
-            </svg>
-          </button>
-          <div className="flex flex-col text-3xl font-normal text-center gap-4">
-            {
-              routes.map((route,key)=><button key={key} onClick={()=>handleRedirect(route.link)} disabled={document?.location?.pathname === route.link} className={`${ document?.location?.pathname === route.link ? 'opacity-30' : ''}`}>{route.name}</button>)
-            }
+          <div className="flex flex-col text-4xl font-normal text-center gap-4">
+            {routes.map((route, key) => (
+              <div key={key} className="overflow-hidden">
+                <button
+                  onClick={() => handleRedirect(route.link)}
+                  disabled={document?.location?.pathname === route.link}
+                  className={`${hidding ? 'animate-slideDownButton' : 'animate-slideUpButton'} translate-y-9 ${
+                    document?.location?.pathname === route.link
+                      ? "opacity-30"
+                      : ``
+                  }`}
+                >
+                  {route.name}
+                </button>
+              </div>
+            ))}
           </div>
-        </div> : ""
-      }
-      <button title="close menu" className={`block md:hidden`} onClick={handleToggleMenu}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="icon icon-tabler icon-tabler-menu-deep"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          strokeWidth="2"
-          stroke="currentColor"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-          <path d="M4 6h16"></path>
-          <path d="M7 12h13"></path>
-          <path d="M10 18h10"></path>
-        </svg>
-      </button>
+        </div>
+      ) : (
+        ""
+      )}
+      <div
+        title="open menu"
+        className={`block md:hidden w-5 h-[10px] relative group`}
+        onClick={handleToggleMenu}
+      >
+        <div
+          className={`w-full h-[2px] bg-black dark:bg-white rounded-full absolute top-0 ${
+            hidding
+              ? "animate-closeLineTop"
+              : open
+              ? "animate-openLineTop"
+              : "animate-none"
+          }`}
+        ></div>
+        <div
+          className={`w-full h-[2px] bg-black dark:bg-white rounded-full right-0 absolute top-full ${
+            hidding
+              ? "animate-closeLineBottom"
+              : open
+              ? "animate-openLineBottom"
+              : "animate-none"
+          }`}
+        ></div>
+      </div>
     </div>
   );
 };

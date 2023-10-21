@@ -21,11 +21,11 @@ const works = (await getCollection("work")).sort(
     {
       works.map((work, i) => (
         <li
-          class={`group w-full h-96 md:h-[500px] group text-white sticky top-20 shadow-xl scroll-cards__item rounded-3xl`}
+          class={`group w-full h-96 md:h-[500px] group sticky top-20 scroll-cards__item rounded-3xl bg-white-theme border-2 dark:from-transparent dark:to-transparent dark:border-black border-neutral-200 dark:bg-transparent dark:shadow-card-dark`}
         >
           <a href={`/work/${work.slug}/`}>
             <div class="flex flex-col md:flex-row h-full overflow-hidden gap-0 md:gap-6">
-              <div class="w-full transition-all duration-300 overflow-hidden rounded-t-3xl md:rounded-3xl border-2 border-gray-theme">
+              <div class="w-full transition-all duration-300 overflow-hidden rounded-tl-3xl rounded-t-3xl md:rounded-3xl border-2 border-transparent dark:border-gray-theme">
                 <Image
                   alt={`Work: ${work.data.title}`}
                   transition:name={`workimage ${work.slug}`}
@@ -34,8 +34,8 @@ const works = (await getCollection("work")).sort(
                   class={`w-full h-64 md:h-full object-cover object-center-top group-hover:scale-105 transition-all duration-500`}
                 />
               </div>
-              <div class="transition-all duration-300 w-full md:w-[470px] font-medium flex flex-col justify-center items-center md:items-end bg-black p-6 rounded-b-3xl md:rounded-3xl border-2 border-gray-theme">
-                <p class="text-xl md:text-3xl font-bold flex items-center gap-0 group-hover:gap-2 group-hover:text-primary text-right">
+              <div class="transition-all duration-300 w-full md:w-[470px] font-medium flex flex-col justify-center items-center p-7 dark:p-6 rounded-b-3xl md:rounded-3xl border-0 dark:border-2 border-gray-theme dark:bg-black">
+                <p class="text-xl md:text-3xl font-bold flex items-center gap-0 group-hover:gap-2 group-hover:text-primary text-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -52,7 +52,7 @@ const works = (await getCollection("work")).sort(
                   </svg>
                   {work.data.title}
                 </p>
-                <p class="text-base md:text-xl text-[#A7A7A7] text-center md:text-right">
+                <p class="text-base md:text-xl opacity-60 text-center">
                   {work.data.description}
                 </p>
               </div>
@@ -67,7 +67,7 @@ const works = (await getCollection("work")).sort(
 <style>
   #cards-title{
     position: sticky;
-    top: 10px;
+    top: 5px;
   }
   .scroll-cards {
     counter-reset: card;
@@ -82,7 +82,6 @@ const works = (await getCollection("work")).sort(
 
   .scroll-cards__item {
     --offset: 0.8em;
-    box-shadow: -20px -8px 40px 8px rgb(0 0 0 / 18%);
     transform-origin: top;
   }
 
@@ -91,48 +90,48 @@ const works = (await getCollection("work")).sort(
 
       animation: linear  scale forwards;
 	animation-timeline: --cards-element-scrolls-in-body;
-	animation-range: exit-crossing calc( calc( 1 - 4) / 3 * 100%) exit-crossing calc(2 * 100%);
+	animation-range: exit-crossing calc( calc( 1 - 4) / 10 * 100%) exit-crossing calc(6 * 100%);
   }
   .scroll-cards__item:nth-of-type(1) {
     transform: translateY(calc((1 - 1) * var(--offset)));
 
       animation: linear  scale forwards;
 	animation-timeline: --cards-element-scrolls-in-body;
-	animation-range: exit-crossing calc( calc( 2 - 4) / 3 * 100%) exit-crossing calc(2 * 100%);
+	animation-range: exit-crossing calc( calc( 2 - 4) / 10 * 100%) exit-crossing calc(6 * 100%);
   }
   .scroll-cards__item:nth-of-type(2) {
     transform: translateY(calc((2 - 1) * var(--offset)));
 
       animation: linear  scale forwards;
 	animation-timeline: --cards-element-scrolls-in-body;
-	animation-range: exit-crossing calc( calc( 3 - 4) / 3 * 100%) exit-crossing calc(2 * 100%);
+	animation-range: exit-crossing calc( calc( 3 - 4) / 10 * 100%) exit-crossing calc(6 * 100%);
   }
   .scroll-cards__item:nth-of-type(3) {
     transform: translateY(calc((3 - 1) * var(--offset)));
 
       animation: linear  scale forwards;
 	animation-timeline: --cards-element-scrolls-in-body;
-	animation-range: exit-crossing calc( calc( 4 - 4) / 3 * 100%) exit-crossing calc(2 * 100%);
+	animation-range: exit-crossing calc( calc( 4 - 4) / 10 * 100%) exit-crossing calc(6 * 100%);
   }
   .scroll-cards__item:nth-of-type(4) {
     transform: translateY(calc((4 - 1) * var(--offset)));
 
       animation: linear  scale forwards;
 	animation-timeline: --cards-element-scrolls-in-body;
-	animation-range: exit-crossing calc( calc( 5 - 4) / 3 * 100%) exit-crossing calc(2 * 100%);
+	animation-range: exit-crossing calc( calc( 5 - 4) / 10 * 100%) exit-crossing calc(6 * 100%);
   }
   .scroll-cards__item:nth-of-type(5) {
     transform: translateY(calc((5 - 1) * var(--offset)));
 
       animation: linear  scale forwards;
 	animation-timeline: --cards-element-scrolls-in-body;
-	animation-range: exit-crossing calc( calc( 6 - 4) / 3 * 100%) exit-crossing calc(2 * 100%);
+	animation-range: exit-crossing calc( calc( 6 - 4) / 10 * 100%) exit-crossing calc(6 * 100%);
   }
   .scroll-cards__item:nth-of-type(6) {
     transform: translateY(calc((6 - 1) * var(--offset)));
 
       animation: linear  scale forwards;
 	animation-timeline: --cards-element-scrolls-in-body;
-	animation-range: exit-crossing calc( calc( 7 - 4) / 3 * 100%) exit-crossing calc(2 * 100%);
+	animation-range: exit-crossing calc( calc( 7 - 4) / 10 * 100%) exit-crossing calc(6 * 100%);
   }
 </style>
