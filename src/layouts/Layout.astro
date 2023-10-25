@@ -12,7 +12,7 @@ const { title = "Daniela Paiva" } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" style="scrollbar-gutter: stable;" class="scroll-smooth">
+<html lang="en" style="scrollbar-gutter: stable;" class="scroll-smooth dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
@@ -191,6 +191,12 @@ const { title = "Daniela Paiva" } = Astro.props;
       article ol li:last-child p {
         margin-bottom: 0px;
       }
+
+      article pre {
+        border-radius: 5px;
+        padding-inline: 10px;
+        margin-top: 10px;
+      }
     </style>
     <script is:inline>
     const theme = (() => {
@@ -203,13 +209,11 @@ const { title = "Daniela Paiva" } = Astro.props;
       if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
         return "dark";
       }
-      return "light";
+      return "dark";
     })();
 
     if (theme === "light") {
       document.documentElement.classList.remove("dark");
-    } else {
-      document.documentElement.classList.add("dark");
     }
 
     window.localStorage.setItem("theme", theme);

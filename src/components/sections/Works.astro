@@ -10,128 +10,77 @@ const works = (await getCollection("work")).sort(
 ---
 
 <Section id="work" wAnimation={false}>
-  <div id="cards-title" class="flex flex-col md:flex-row justify-between">
-    <Title title="Work" />
+  <div id="content">
+    <div id="cards-title" class="flex flex-col md:flex-row justify-between">
+      <Title title="Work & Projects" />
+    </div>
+    <ul
+      id="cards"
+      class={`grid grid-cols-1 gap-8 mb-6 relative`}
+      transition:animate="fade"
+    >
+      {
+        works.map((work, i) => (
+          <li
+            class={`group w-full h-96 md:h-[500px] group rounded-3xl bg-white-theme border-2 dark:from-transparent dark:to-transparent dark:border-black border-neutral-200 dark:bg-transparent dark:shadow-card-dark`}
+          >
+            <a href={`/work/${work.slug}/`}>
+              <div class="flex flex-col md:flex-row h-full overflow-hidden gap-0 md:gap-6">
+                <div class="w-full transition-all duration-300 overflow-hidden rounded-tl-3xl rounded-t-3xl md:rounded-3xl border-2 border-transparent dark:border-gray-theme">
+                  <Image
+                    alt={`Work: ${work.data.title}`}
+                    transition:name={`workimage ${work.slug}`}
+                    src={work.data.heroImage}
+                    loading={"lazy"}
+                    class={`w-full h-64 md:h-full object-cover object-center-top group-hover:scale-105 transition-all duration-500`}
+                  />
+                </div>
+                <div class="transition-all duration-300 w-full md:w-[470px] font-medium flex flex-col justify-center items-center p-7 dark:p-6 rounded-b-3xl md:rounded-3xl border-0 dark:border-2 border-gray-theme dark:bg-black">
+                  <p class="text-xl md:text-3xl font-bold flex items-center gap-0 group-hover:gap-2 group-hover:text-primary text-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-0 h-6 group-hover:w-8 transition-all duration-300"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                      />
+                    </svg>
+                    {work.data.title}
+                  </p>
+                  <p class="text-base md:text-xl opacity-60 text-center">
+                    {work.data.description}
+                  </p>
+                </div>
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
   </div>
-  <ul
-    id="cards"
-    class={`grid grid-cols-1 gap-8 mb-6 relative scroll-cards`}
-    transition:animate="fade"
-  >
-    {
-      works.map((work, i) => (
-        <li
-          class={`group w-full h-96 md:h-[500px] group sticky top-20 scroll-cards__item rounded-3xl bg-white-theme border-2 dark:from-transparent dark:to-transparent dark:border-black border-neutral-200 dark:bg-transparent dark:shadow-card-dark`}
-        >
-          <a href={`/work/${work.slug}/`}>
-            <div class="flex flex-col md:flex-row h-full overflow-hidden gap-0 md:gap-6">
-              <div class="w-full transition-all duration-300 overflow-hidden rounded-tl-3xl rounded-t-3xl md:rounded-3xl border-2 border-transparent dark:border-gray-theme">
-                <Image
-                  alt={`Work: ${work.data.title}`}
-                  transition:name={`workimage ${work.slug}`}
-                  src={work.data.heroImage}
-                  loading={"lazy"}
-                  class={`w-full h-64 md:h-full object-cover object-center-top group-hover:scale-105 transition-all duration-500`}
-                />
-              </div>
-              <div class="transition-all duration-300 w-full md:w-[470px] font-medium flex flex-col justify-center items-center p-7 dark:p-6 rounded-b-3xl md:rounded-3xl border-0 dark:border-2 border-gray-theme dark:bg-black">
-                <p class="text-xl md:text-3xl font-bold flex items-center gap-0 group-hover:gap-2 group-hover:text-primary text-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="w-0 h-6 group-hover:w-8 transition-all duration-300"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                    />
-                  </svg>
-                  {work.data.title}
-                </p>
-                <p class="text-base md:text-xl opacity-60 text-center">
-                  {work.data.description}
-                </p>
-              </div>
-            </div>
-          </a>
-        </li>
-      ))
-    }
-  </ul>
 </Section>
 
 <style>
-  #cards-title{
-    position: sticky;
-    top: 5px;
-  }
-  .scroll-cards {
-    counter-reset: card;
-	view-timeline-name: --cards-element-scrolls-in-body;
-  }
-
-  @keyframes scale {
-    to {
-      transform: scale(70%);
+  @keyframes slideUpContact2 {
+    0% {
+      opacity: 0;
+      transform: translateY(3%);
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
     }
   }
-
-  .scroll-cards__item {
-    --offset: 0.8em;
-    transform-origin: top;
-  }
-
-  .scroll-cards__item:nth-of-type(0) {
-    transform: translateY(calc((0 - 1) * var(--offset)));
-
-      animation: linear  scale forwards;
-	animation-timeline: --cards-element-scrolls-in-body;
-	animation-range: exit-crossing calc( calc( 1 - 4) / 10 * 100%) exit-crossing calc(6 * 100%);
-  }
-  .scroll-cards__item:nth-of-type(1) {
-    transform: translateY(calc((1 - 1) * var(--offset)));
-
-      animation: linear  scale forwards;
-	animation-timeline: --cards-element-scrolls-in-body;
-	animation-range: exit-crossing calc( calc( 2 - 4) / 10 * 100%) exit-crossing calc(6 * 100%);
-  }
-  .scroll-cards__item:nth-of-type(2) {
-    transform: translateY(calc((2 - 1) * var(--offset)));
-
-      animation: linear  scale forwards;
-	animation-timeline: --cards-element-scrolls-in-body;
-	animation-range: exit-crossing calc( calc( 3 - 4) / 10 * 100%) exit-crossing calc(6 * 100%);
-  }
-  .scroll-cards__item:nth-of-type(3) {
-    transform: translateY(calc((3 - 1) * var(--offset)));
-
-      animation: linear  scale forwards;
-	animation-timeline: --cards-element-scrolls-in-body;
-	animation-range: exit-crossing calc( calc( 4 - 4) / 10 * 100%) exit-crossing calc(6 * 100%);
-  }
-  .scroll-cards__item:nth-of-type(4) {
-    transform: translateY(calc((4 - 1) * var(--offset)));
-
-      animation: linear  scale forwards;
-	animation-timeline: --cards-element-scrolls-in-body;
-	animation-range: exit-crossing calc( calc( 5 - 4) / 10 * 100%) exit-crossing calc(6 * 100%);
-  }
-  .scroll-cards__item:nth-of-type(5) {
-    transform: translateY(calc((5 - 1) * var(--offset)));
-
-      animation: linear  scale forwards;
-	animation-timeline: --cards-element-scrolls-in-body;
-	animation-range: exit-crossing calc( calc( 6 - 4) / 10 * 100%) exit-crossing calc(6 * 100%);
-  }
-  .scroll-cards__item:nth-of-type(6) {
-    transform: translateY(calc((6 - 1) * var(--offset)));
-
-      animation: linear  scale forwards;
-	animation-timeline: --cards-element-scrolls-in-body;
-	animation-range: exit-crossing calc( calc( 7 - 4) / 10 * 100%) exit-crossing calc(6 * 100%);
+  #content {
+    animation: slideUpContact2 0.4s ease-out forwards;
   }
 </style>

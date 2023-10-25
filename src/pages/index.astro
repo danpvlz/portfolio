@@ -30,13 +30,14 @@ import Contact from "../components/sections/Contact.astro";
 
           const intersecting = entry.isIntersecting;
           if (intersecting) {
+          console.log(entry.target.id);
             title?.classList.remove("hide");
             content?.classList.remove("hide");
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: [0.3], rootMargin: "50px" }
+      { threshold: [0.15], rootMargin: "50px" }
     );
     const sections = document.querySelectorAll("section");
     sections.forEach((section) => observer.observe(section));
