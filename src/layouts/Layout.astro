@@ -23,6 +23,16 @@ const { title = "Daniela Paiva" } = Astro.props;
     <ViewTransitions />
     <FontLoader />
   </head>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ECXL99LRWF"></script>
+  <script is:inline>
+    window.dataLayer = window?.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-ECXL99LRWF');
+  </script>
+
   <body
     class="transition-all duration-200 ease-in-out bg-creame dark:bg-black font-sans text-black dark:text-white flex items-center flex-col min-h-screen overflow-x-hidden selection:bg-emerald-500 selection:text-black scroll-px-0 md:scroll-px-80 font-light text-base md:text-xl"
   >
