@@ -1,7 +1,7 @@
 ---
 title: 'GameHub'
 description: 'Development of figma design'
-url: 'https://65397c5ce545fe25f1f85848--extraordinary-concha-6924a8.netlify.app/'
+url: 'https://extraordinary-concha-6924a8.netlify.app/'
 pubDate: '2023-10-01'
 heroImage: '../../../public/images/gamehub-screenshot.png'
 tags: ["HTML","CSS","JavaScript","TailwindCSS","TypeScript"]
@@ -20,7 +20,7 @@ GameHub is a web application that brings a stunning Figma design to life using t
   - **Best Practices:** Meets Lighthouse best practices with a score of 95.
   - **SEO:** Excels in SEO optimization, earning a Lighthouse score of 100.
 
-[![GameHub Screenshot](https://raw.githubusercontent.com/danpvlz/gamehub/main/gamehub.png)](https://65397c5ce545fe25f1f85848--extraordinary-concha-6924a8.netlify.app/)
+[![GameHub Screenshot](https://raw.githubusercontent.com/danpvlz/gamehub/main/gamehub.png)](https://extraordinary-concha-6924a8.netlify.app/)
 
 ## Getting Started
 
