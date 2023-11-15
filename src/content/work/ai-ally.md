@@ -20,7 +20,7 @@ AI Ally is a web application that brings a stunning Figma design to life using t
   - **Best Practices:** Meets Lighthouse best practices with a score of 95%.
   - **SEO:** Excels in SEO optimization, earning a Lighthouse score of 100%.
 
-[![GameHub Screenshot](https://raw.githubusercontent.com/danpvlz/ai-ally/main/aially.png)](https://extraordinary-concha-6924a8.netlify.app/)
+[![GameHub Screenshot](https://raw.githubusercontent.com/danpvlz/ai-ally/main/aially.png)](https://preeminent-croquembouche-065364.netlify.app/)
 
 ## Getting Started
 
