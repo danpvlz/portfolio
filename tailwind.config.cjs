@@ -10,7 +10,7 @@ module.exports = {
         sans: ["Raleway", "Inter", ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        creame: '#f5f6f7', //#f3f3f3
+        creame: '#fbfbfe', //#f3f3f3
         black: "#060816",
         "gray-theme": "#181c20",
         "white-theme": "#fbfbfb",

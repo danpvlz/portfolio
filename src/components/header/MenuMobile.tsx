@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { routes } from "./routes";
+import { defaultLang, languages } from "../../i18n/ui";
+import { getLangFromUrl } from "../../i18n/utils";
 
 const MenuMobile = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -22,8 +24,10 @@ const MenuMobile = () => {
     window.location.replace(link);
   };
 
+  const curLang = getLangFromUrl(new URL(window.location.href));
+
   return (
-    <div className="relative flex items-center">
+    <div className="relative flex sm:hidden items-center">
       {open ? (
         <div
           className={`${
@@ -36,7 +40,11 @@ const MenuMobile = () => {
                 <button
                   onClick={() => handleRedirect(route.link)}
                   disabled={document?.location?.pathname === route.link}
-                  className={`${hidding ? 'animate-slideDownButton' : 'animate-slideUpButton'} translate-y-9 ${
+                  className={`${
+                    hidding
+                      ? "animate-slideDownButton"
+                      : "animate-slideUpButton"
+                  } translate-y-9 ${
                     document?.location?.pathname === route.link
                       ? "opacity-30"
                       : ``
@@ -47,10 +55,25 @@ const MenuMobile = () => {
               </div>
             ))}
           </div>
+
+          {
+            <ul className="absolute bottom-10 text-center text-sm font-medium flex flex-col gap-1 text-gray-400">
+              {
+                Object.entries(languages).map(([lang, label], i) => <li key={lang} className={` px-4 py-1 rounded-lg ${curLang == lang ? 'text-white bg-slate-900' : ''}`}>
+                  <a 
+                  target="_self"
+                  aria-label={label}
+                  href={lang != defaultLang ? `/${lang}/` : "/"}>{label}</a>
+                </li>)
+              }
+            </ul>
+          }
+
         </div>
       ) : (
         ""
       )}
+      
       <div
         title="open menu"
         className={`block md:hidden w-5 h-[10px] relative group`}

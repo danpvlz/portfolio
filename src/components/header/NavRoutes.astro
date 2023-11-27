@@ -1,0 +1,29 @@
+---
+import { getLangFromUrl, useTranslatedPath, useTranslations } from "../../i18n/utils";
+import { routes } from "./routes";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const r = useTranslatedPath(lang);
+---
+
+<div class="flex gap-9 md:gap-2 items-center">
+    <nav class="hidden md:block">
+      <ul class="flex flex-col md:flex-row gap-2 relative">
+        {
+          routes.map((route) => (
+            <li class="py-4 px-4 relative">
+              <a
+                href={r(route.access)}
+                class={
+                  "opacity-60 transition-all duration-[250ms] after:transition-all after:duration-[250ms] hover:text-primary hover:opacity-100 after:absolute after:inset-0 after:border-b-2 after:border-primary after:m-auto after:w-1 after:opacity-0 hover:after:opacity-100 hover:after:w-full hover:after:visible after:invisible"
+                }
+              >
+                {t(route.access)}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>

@@ -1,0 +1,23 @@
+---
+import { defaultLang, languages } from "../../i18n/ui";
+import { getLangFromUrl } from "../../i18n/utils";
+const curLang = getLangFromUrl(Astro.url);
+---
+
+<ul class="hidden sm:flex items-center text-xs md:text-base text-gray-400 font-medium">
+  {
+    Object.entries(languages).map(([lang, label], i) => (
+      <li class={`flex ${curLang === lang ? 'text-white bg-white bg-opacity-10' : ''} py-1 px-2 rounded-lg`}>
+        <a
+        data-astro-reload
+          target="_self"
+          aria-label={label}
+          href={lang != defaultLang ? `/${lang}/` : "/"}
+          class={`uppercase`}
+        >
+          {lang}
+        </a>
+      </li>
+    ))
+  }
+</ul>

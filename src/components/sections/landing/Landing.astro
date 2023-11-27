@@ -1,25 +1,28 @@
 ---
-import Section from "../Section.astro";
-import Carousel from "../Carousel.astro";
-import CircularButton from "../CircularButton.astro";
+import Section from "../../ui/Section.astro";
+import Carousel from "./Carousel.astro";
+import CircularButton from "../../CircularButton.astro";
+import { getLangFromUrl, useTranslations } from "../../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <Section
   id="home"
   extra="flex-1 min-h-[450px] md:min-h-700 mt-16 md:mt-0 bg-opacity-40"
-  wAnimation={false}
 >
   <div
     id="content"
-    class="absolute top-32 md:top-40 left-0 right-0 flex justify-center flex-col items-center gap-10 md:gap-20 text-lg md:text-3xl pb-20 md:py-0"
+    class="absolute top-32 md:top-40 left-0 right-0 flex justify-center flex-col items-center gap-10 md:gap-20 text-lg md:text-3xl pb-20 md:py-0 mt-4 cursor-default"
   >
     <div class="w-full max-w-7xl px-7 flex flex-col gap-10 md:gap-20">
       <span class="overflow-hidden">
         <span
           id="title"
-          class="text-5xl md:text-8xl font-bold block md:flex gap-5 items-center"
+          class="text-5xl md:text-8xl font-bold block md:flex gap-5 items-center break-words"
         >
-          <h1>Full-Stack <span class="text-primary">Developer</span></h1>
+          <h1>{t('h1.first')}{' '}<span class="text-primary">{t('h1.second')}</span></h1>
         </span>
       </span>
       <div class="relative">
@@ -27,11 +30,9 @@ import CircularButton from "../CircularButton.astro";
           <CircularButton width="w-40" />
         </div>
         <div class="overflow-hidden">
-          <div id="description" class="flex justify-end ml-auto">
+          <div id="description" class="flex justify-end ml-auto max-w-3xl">
             <p>
-              Dedicated to creating digital solutions, bringing ideas to <br class="hidden lg:block" />
-               life and crafting extraordinary digital realities on the <br class="hidden lg:block" />
-               ever-evolving web.
+              {t('description')}
             </p>
           </div>
         </div>
@@ -45,9 +46,9 @@ import CircularButton from "../CircularButton.astro";
     </div>
     <div class="w-full max-w-7xl px-7 overflow-hidden">
       <p id="phrase" class="relative text-right text-base md:text-2xl">
-        If you can <span class="font-bold">dream</span> it, I can <span
-          class="font-bold">build</span
-        > it
+        {t('inspiring.phrase.1')}{' '}<span class="font-bold">{t('inspiring.phrase.2')}</span>{' '}{t('inspiring.phrase.3')}{' '}<span
+          class="font-bold">{t('inspiring.phrase.4')}</span
+        >{' '}{t('inspiring.phrase.5')}
       </p>
     </div>
   </div>

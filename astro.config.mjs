@@ -7,6 +7,6 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://danielapaiva.netlify.app/',
+  site: 'http://danielapaiva.dev/',
   integrations: [tailwind(), react(), mdx(), sitemap()]
 });

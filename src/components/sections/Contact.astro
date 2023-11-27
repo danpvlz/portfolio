@@ -1,18 +1,22 @@
 ---
 import { MY_EMAIL } from "../../constants";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 import CircularButton from "../CircularButton.astro";
-import LinkTo from "../LinkTo.astro";
-import Section from "../Section.astro";
+import LinkTo from "../ui/LinkTo.astro";
+import Section from "../ui/Section.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <Section
   id="contact"
-  extra="flex h-full w-full items-center justify-center flex-1 min-h-[400px] overflow-hidden"
+  extra="flex h-full w-full items-center justify-center flex-1 min-h-[500px] overflow-hidden"
 >
   <div id="content" class="w-full flex flex-col md:flex-row md:justify-between items-center">
     <div class="w-full flex flex-col text-xl md:text-2xl relative mb-10 md:mb-0">
       <h3 class="text-6xl mb-4 md:mb-8 font-bold">
-        Let's <span class="text-primary">Create</span> Together
+        {t('contact.title.1')}<span class="text-primary">{t('contact.title.2')}</span>{t('contact.title.3')}
       </h3>
       <div class="leading-normal flex flex-col items-start gap-0 md:gap-2">
         <LinkTo link={`mailto:${MY_EMAIL}`}>

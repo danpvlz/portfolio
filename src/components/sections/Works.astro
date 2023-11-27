@@ -1,18 +1,28 @@
 ---
 import { Image } from "astro:assets";
-import Section from "../Section.astro";
-import Title from "../Title.astro";
+import Section from "../ui/Section.astro";
+import Title from "../ui/Title.astro";
 import { getCollection } from "astro:content";
+import { getLangFromUrl, useTranslatedPath, useTranslations } from "../../i18n/utils";
+import { defaultLang } from "../../i18n/ui";
 
 const works = (await getCollection("work")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+
+const proyectos = (await getCollection("proyecto")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const r = useTranslatedPath(lang);
 ---
 
-<Section id="work" wAnimation={false}>
+<Section id="work">
   <div id="content">
     <div id="cards-title" class="flex flex-col md:flex-row justify-between">
-      <Title title="Work & Projects" />
+      <Title title={t('title.work')} />
     </div>
     <ul
       id="cards"
@@ -20,22 +30,22 @@ const works = (await getCollection("work")).sort(
       transition:animate="fade"
     >
       {
-        works.map((work, i) => (
+        (lang === defaultLang ? works : proyectos).map((work, i) => (
           <li
-            class={`group w-full h-96 md:h-[500px] group rounded-3xl bg-white-theme border-2 dark:from-transparent dark:to-transparent dark:border-black border-neutral-200 dark:bg-transparent dark:shadow-card-dark`}
+            class={`group w-full h-96 md:h-[500px] group bg-white-theme border-2 dark:from-transparent dark:to-transparent dark:border-black border-neutral-200 dark:bg-transparent dark:shadow-card-dark`}
           >
-            <a href={`/work/${work.slug}/`}>
+            <a href={`${r('work')}/${work.slug}/`}>
               <div class="flex flex-col md:flex-row h-full overflow-hidden gap-0 md:gap-6">
-                <div class="w-full transition-all duration-300 overflow-hidden rounded-tl-3xl rounded-t-3xl md:rounded-3xl border-2 border-transparent dark:border-gray-theme">
+                <div class="w-full transition-all duration-300 overflow-hidden border-2 border-transparent dark:border-gray-theme rounded-t-xl md:rounded-[35px]">
                   <Image
                     alt={`Work: ${work.data.title}`}
                     transition:name={`workimage ${work.slug}`}
                     src={work.data.heroImage}
                     loading={"lazy"}
-                    class={`w-full h-64 md:h-full object-cover object-center-top group-hover:scale-105 transition-all duration-500 rounded-tl-3xl rounded-t-3xl md:rounded-3xl`}
+                    class={`w-full h-64 md:h-full object-cover object-center-top group-hover:scale-105 transition-all duration-500 rounded-t-xl md:rounded-[35px]`}
                   />
                 </div>
-                <div class="transition-all duration-300 w-full md:w-[470px] font-medium flex flex-col justify-center items-center p-7 dark:p-6 rounded-b-3xl md:rounded-3xl border-0 dark:border-2 border-gray-theme dark:bg-black">
+                <div class="transition-all duration-300 w-full md:w-[470px] font-medium flex flex-col justify-center items-center p-7 dark:p-6 rounded-b-xl md:rounded-[35px] border-0 dark:border-2 border-gray-theme dark:bg-black">
                   <p class="text-xl md:text-3xl font-bold flex items-center gap-0 group-hover:gap-2 group-hover:text-primary text-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

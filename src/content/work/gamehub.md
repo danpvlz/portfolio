@@ -2,7 +2,7 @@
 title: 'GameHub'
 description: 'Development of figma design'
 url: 'https://extraordinary-concha-6924a8.netlify.app/'
-pubDate: '2023-10-01'
+pubDate: '2022-05-01'
 heroImage: '../../../public/images/gamehub-screenshot.png'
 tags: ["HTML","CSS","JavaScript","TailwindCSS","TypeScript"]
 ---

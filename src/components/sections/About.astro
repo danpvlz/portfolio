@@ -1,11 +1,12 @@
 ---
-import Section from "../Section.astro";
-import Title from "../Title.astro";
-import Chip from "../Chip.astro";
+import Section from "../ui/Section.astro";
+import Title from "../ui/Title.astro";
+import Chip from "../ui/Chip.astro";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 
 const stacks = [
   {
-    type: "Frontend",
+    type: "about.list.frontend",
     skills: [
       "HTML",
       "CSS3",
@@ -19,7 +20,7 @@ const stacks = [
     ],
   },
   {
-    type: "Backend",
+    type: "about.list.backend",
     skills: [
       "Node.js",
       "Express",
@@ -33,39 +34,31 @@ const stacks = [
     ],
   },
   {
-    type: "Languagues",
+    type: "about.list.languagues",
     skills: ["PHP", "C++", "C#", "Python", "Java", "SQL"],
   },
   {
-    type: "Testing",
+    type: "about.list.testing",
     skills: ["Jest", "Cypress", "Playwright"],
   },
 ];
+
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <Section id="about">
-  <Title title="About" />
+  <Title title={t('title.about')} />
   <div id="content" class="max-w-3xl flex flex-col gap-8">
-    <p>
-      At the age of 17, one doesn't typically make the best life decisions, but
-      I'm grateful to my 17-year-old self for choosing systems engineering. This
-      path introduced me to excellent professors, friends, and, above all, my
-      passion: software development. From my initial lines of code in Java to
-      working with the latest JavaScript frameworks, it's a journey I thoroughly
-      enjoy, and I couldn't imagine doing anything else.
-    </p>
-    <p>
-      In my professional life, I've also been fortunate to work on projects that
-      I believe in and where I feel I play a significant role. I've had the
-      opportunity to be a part of teams from which I've learned a great deal and
-      grown professionally.
-    </p>
-    <p>My stack includes, but is not limited to:</p>
+    <p>{t('about.content.1')}</p>
+    <p>{t('about.content.2')}</p>
+    <p>{t('about.content.3')}</p>
     <div class={`flex flex-col gap-10 `}>
       {
         stacks.map((stack) => (
           <div class="flex flex-col gap-4">
-            <p class="w-44 font-bold">{stack.type}</p>
+            <p class="w-44 font-bold">{t(stack.type)}</p>
             <div class="w-full flex flex-wrap gap-4">
               {stack.skills.map((skill) => (
                 <Chip skill={skill} />
@@ -76,15 +69,14 @@ const stacks = [
       }
     </div>
     <p>
-      I live in <span
+      {t('about.content.4.1')}<span
         class="cursor-llama group transition-all duration-200 underline hover:no-underline font-bold"
         ><span class="transition-all duration-200 group-hover:text-red-500"
           >P</span
         >er<span class="transition-all duration-200 group-hover:text-red-500"
           >u</span
         ></span
-      >, so naturally, one of my hobbies is discovering new restaurants and
-      trying to travel as much as I can.
+      >{t('about.content.4.2')}
     </p>
   </div>
 </Section>

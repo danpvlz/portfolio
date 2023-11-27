@@ -1,11 +1,19 @@
 ---
 import { MY_EMAIL } from "../constants";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <footer class="max-w-7xl w-full text-lg px-7">
   <hr class="border-gray-theme" />
-  <div class="py-10 flex flex-col md:flex-row justify-center md:justify-between items-center gap-4 md:gap-2">
-    <p class="flex flex-col md:flex-row gap-2 items-center text-center md:text-start">
+  <div
+    class="py-10 flex flex-col md:flex-row justify-center md:justify-between items-center gap-4 md:gap-2"
+  >
+    <p
+      class="flex flex-col md:flex-row gap-2 items-center text-center md:text-start"
+    >
       <svg
         class="text-primary"
         width="21"
@@ -18,12 +26,12 @@ import { MY_EMAIL } from "../constants";
           d="M5.10608 0.277625C5.99114 0.126823 6.89876 0.176569 7.76204 0.423196C8.62532 0.669822 9.42225 1.10704 10.0941 1.70263L10.1311 1.73563L10.1651 1.70563C10.8063 1.14292 11.5601 0.723421 12.3763 0.475108C13.1924 0.226795 14.0521 0.155379 14.8981 0.265625L15.1441 0.301625C16.2104 0.485735 17.2071 0.954782 18.0285 1.6591C18.85 2.36341 19.4658 3.27677 19.8105 4.30246C20.1553 5.32815 20.2163 6.42798 19.987 7.4855C19.7577 8.54301 19.2467 9.51883 18.5081 10.3096L18.3281 10.4946L18.2801 10.5356L10.8301 17.9146C10.6582 18.0848 10.4304 18.1869 10.189 18.2019C9.94754 18.217 9.70884 18.1441 9.51708 17.9966L9.42308 17.9146L1.93008 10.4926C1.1363 9.72028 0.57178 8.7433 0.299039 7.66989C0.0262982 6.59648 0.0559808 5.46852 0.384799 4.41094C0.713618 3.35336 1.32874 2.40742 2.16204 1.6779C2.99534 0.94837 4.01431 0.463722 5.10608 0.277625Z"
           fill="currentColor"></path>
       </svg>
-       Made with love and tons of procrastination.
+      {t("footer.message")}
     </p>
     <div class="flex gap-4">
       <a
         title="Email"
-        class="hover:scale-150 transition-all duration-300"
+        class="hover:scale-125 transition-all duration-300"
         href={`mailto:${MY_EMAIL}`}
         target="_blank"
         rel="noreferrer"
@@ -49,7 +57,7 @@ import { MY_EMAIL } from "../constants";
       </a>
       <a
         title="Twitter"
-        class="hover:scale-150 transition-all duration-300"
+        class="hover:scale-125 transition-all duration-300"
         href="https://twitter.com/danielapaiva"
         target="_blank"
         rel="noreferrer"
@@ -73,7 +81,7 @@ import { MY_EMAIL } from "../constants";
       </a>
       <a
         title="GitHub"
-        class="hover:scale-150 transition-all duration-300"
+        class="hover:scale-125 transition-all duration-300"
         href="https://github.com/danpvlz"
         target="_blank"
         rel="noreferrer"

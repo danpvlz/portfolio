@@ -1,0 +1,26 @@
+---
+import { twMerge } from "tailwind-merge";
+import { getLangFromUrl, useTranslatedPath } from "../../i18n/utils";
+
+interface Props {
+  id: string;
+  extra?: string;
+  wAnimation?: boolean;
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslatedPath(lang);
+
+const { id, extra} = Astro.props;
+const sectionId = t(`nav.${id}`).split("#")[1]
+---
+
+<section
+  id={sectionId}
+  class={twMerge(
+    "w-full pt-14 md:pt-28 pb-10 md:pb-20",
+    extra
+  )}
+>
+  <slot />
+</section>

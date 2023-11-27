@@ -1,10 +1,15 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import Layout from "./Layout.astro";
-import LinkTo from "../components/LinkTo.astro";
-import Chip from "../components/Chip.astro";
+import LinkTo from "../components/ui/LinkTo.astro";
+import Chip from "../components/ui/Chip.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
-type Props = CollectionEntry<"work">;
+type Props = CollectionEntry<"work" | "proyecto">;
+
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const {
   data: { title, heroImage, url, tags },
@@ -16,7 +21,7 @@ const {
   <article class="flex flex-col gap-[60px] py-14 md:py-32 max-w-4xl">
     <div class="w-full flex flex-col">
       {
-        url && <LinkTo link={url}>Live View</LinkTo>
+        url && <LinkTo link={url}>{t("preview.text")}</LinkTo>
       }
       <h1 class="text-6xl font-extrabold mb-4 mt-3" transition:name={`worktitle ${slug}`}>{title}</h1>
       {

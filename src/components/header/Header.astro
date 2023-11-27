@@ -1,0 +1,67 @@
+---
+import MenuMobile from "../header/MenuMobile";
+import { Image } from "astro:assets";
+import myImage from "../../assets/daniela.png";
+import LanguagePicker from "../header/LanguagePicker.astro";
+import NavRoutes from "../header/NavRoutes.astro";
+import { getLangFromUrl, useTranslatedPath } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const r = useTranslatedPath(lang);
+---
+
+<header
+  class={`font-normal dark:font-light overflow-hidden transition-all duration-[250ms] ease-in-out w-full flex justify-between max-w-7xl px-7 static mt-5 md:mt-0 md:fixed z-50 bg-creame dark:bg-black dark:bg-opacity-50 md:backdrop-blur-xl rounded-full top-2`}
+>
+  <a
+    id="name-and-picture"
+    href={r("home")}
+    class="flex items-center justify-center align-middle gap-3 font-medium sm:font-light"
+  >
+    <Image
+      src={myImage}
+      alt="Daniela profile picture"
+      class="rounded-full border-2 w-9 aspect-square border-slate-400 bg-black"
+    />
+    <p>Daniela Paiva</p>
+  </a>
+  <NavRoutes />
+  <div class="flex items-center gap-3">
+    <LanguagePicker />
+    <MenuMobile client:only />
+  </div>
+</header>
+<script>
+  const selectRoute = (route: string) => {
+    const allMenus = document.querySelectorAll(`nav a`);
+    allMenus.forEach((m) => {
+      const curRoute = '/#'+m?.getAttribute("href")?.split("/#")[1]
+      if (curRoute === route) {
+        m.classList.remove("opacity-60");
+        m.classList.add("opacity-100");
+        return;
+      }
+      m.classList.add("opacity-60");
+    });
+  };
+
+  const loadObservers = () => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const intersecting = entry.isIntersecting;
+          if (intersecting) {
+            selectRoute(
+              entry.target.id === "/" ? "/#home" : `/#${entry.target.id}`
+            );
+          }
+        });
+      },
+      { threshold: [0.15, 0.6], rootMargin: "50px" }
+    );
+    const sections = document.querySelectorAll("section");
+    sections.forEach((section) => observer.observe(section));
+  };
+
+  window.addEventListener("load", loadObservers);
+</script>
